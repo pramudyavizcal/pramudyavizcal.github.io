@@ -1,4 +1,4 @@
-const skills=['Web Development','SEO & SEM','Google Ads','Meta Ads','WordPress','Laravel','Web Analytics','UI & Visual Design','E-commerce'];
+const skills=['Mobile Apps Development','Web Development','SEO & SEM','Google Ads','Meta Ads','WordPress','Laravel','Web Analytics','UI & Visual Design','E-commerce'];
 const projects=[
   {title:'DesDig — Portal Desa',type:'Full-stack web platform',image:'img/ChatGPT Image 13 Jul 2026, 11.25.13.png',tags:['Laravel','Tailwind','CMS'],featured:true},
   {title:'Resto Digital Mantap',type:'Restaurant management system',image:'img/ChatGPT Image 14 Jul 2026, 12.32.46.png',tags:['QR Order','Dashboard','Analytics']},
@@ -21,3 +21,58 @@ const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isInte
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=`${Math.min(i%4,3)*70}ms`;observer.observe(el)});
 const nav=document.querySelector('#nav');addEventListener('scroll',()=>nav.classList.toggle('nav-scrolled',scrollY>30),{passive:true});
 document.querySelector('#year').textContent=new Date().getFullYear();
+
+const marketingWorks=[
+  {title:'PT Ambassador Technology',category:'seo',label:'SEO & Analytics',description:'Dokumentasi visibilitas amb-tech.com, posisi kata kunci, serta analisis pencarian melalui Semrush dan Google.',folder:'PT Ambassador Technology',files:['Semrush Amb-tech.com.png','Ranking semrush amb-tech.com.png','Ranking position semrush.png','Sentrafotokopi Semrush.png','Analisa Google amb-tech.com.png','Testing Penelusuran.png']},
+  {title:'PT Alucio Net',category:'seo',label:'SEO & Analytics',description:'Pemantauan performa domain alucionet dan posisi kata kunci pada dashboard Semrush.',folder:'PT Alucio Net',files:['alucionet Semrush.png','Ranking semrush alucionet.png']},
+  {title:'CV Mauah Supermarket',category:'seo',label:'SEO & Analytics',description:'Dokumentasi analisis Google, pemantauan Semrush, dan tampilan website pada hasil pencarian.',folder:'CV Mauah Supermarket',files:['Semrush.png','Halaman1Google.png','Analisa Google.png']},
+  {title:'Google Ads · Ambassador',category:'ads',label:'Paid Advertising',description:'Dokumentasi iklan dan kata kunci penelusuran untuk kampanye PT Ambassador Technology.',folder:'PT Ambassador Technology',files:['Iklan(2023.10.11-2025.03.26).png','Iklan(2020.04.11-2025.05.02).png','Kata_kunci_penelusuran(2023.10.11-2025.03.26).png','Kata_kunci_penelusuran(2020.04.11-2025.05.02).png']},
+  {title:'Meta Ads · Produk Digital',category:'ads',label:'Paid Advertising',description:'Dokumentasi kampanye produk digital di Meta Ads, termasuk jangkauan, impresi, dan klik tautan.',folder:'Freelance',files:['Meta Ads penjualan produk digital.png','Meta Ads penjualan produk digital2.png']},
+  {title:'Tokopedia & Shopee',category:'commerce',label:'E-commerce',description:'Dokumentasi toko, iklan marketplace, serta tinjauan produk bulanan di Tokopedia dan Shopee.',folder:'ecommerce',files:['official store tokopedia.png','ads tokopedia.png','ads sentrafotokopi.png','Star+-seller.png','orvelix store.png','moms kids worksheet.png','tinjauan produk bulanan 1.png','tinjauan produk bulanan 2 shopee.png']},
+  {title:'Google Ads Certificates',category:'certification',label:'Sertifikasi',description:'Dokumentasi sertifikat Google Ads dan Google Ads AI. Buka gambar untuk melihat detail sertifikat.',folder:'Freelance',files:['Google ads Certified.png','Google ads AI Certified.png']}
+];
+const marketingPath=(work,file)=>['digitalmarketing',work.folder,file].map(encodeURIComponent).join('/');
+const marketingGrid=document.querySelector('#marketing-grid');
+marketingGrid.innerHTML=marketingWorks.map((work,index)=>`<article class="marketing-card reveal" data-category="${work.category}"><button type="button" class="marketing-preview" data-work="${index}" aria-label="Buka galeri ${work.title}, ${work.files.length} gambar"><img src="${marketingPath(work,work.files[0])}" alt="${work.label} — ${work.title}" loading="lazy" width="640" height="400"><span class="marketing-preview-label">${work.files.length} gambar · Lihat detail ↗</span></button><div class="marketing-card-body"><span class="marketing-category">${work.label}</span><h3>${work.title}</h3><p>${work.description}</p></div></article>`).join('');
+marketingGrid.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const marketingCount=document.querySelector('#marketing-count');
+marketingCount.textContent=`${marketingWorks.length} portofolio ditampilkan`;
+document.querySelector('#marketing-filters').addEventListener('click',event=>{
+  const button=event.target.closest('[data-category]');
+  if(!button)return;
+  document.querySelectorAll('.marketing-filter').forEach(filter=>filter.setAttribute('aria-pressed',String(filter===button)));
+  let count=0;
+  marketingGrid.querySelectorAll('.marketing-card').forEach(card=>{
+    card.hidden=button.dataset.category!=='all'&&card.dataset.category!==button.dataset.category;
+    if(!card.hidden)count++;
+  });
+  marketingCount.textContent=`${count} portofolio ditampilkan`;
+});
+const marketingViewer=document.querySelector('#marketing-viewer');
+let activeMarketingWork=0,activeMarketingImage=0;
+function showMarketingImage(){
+  const work=marketingWorks[activeMarketingWork];
+  const file=work.files[activeMarketingImage];
+  document.querySelector('#marketing-viewer-title').textContent=work.title;
+  const img=document.querySelector('#marketing-viewer-image');
+  img.src=marketingPath(work,file);img.alt=`${work.title} — ${file.replace(/\.[^.]+$/,'')}`;
+  document.querySelector('#marketing-position').textContent=`${activeMarketingImage+1} / ${work.files.length}`;
+}
+function stepMarketingImage(direction){
+  activeMarketingImage=(activeMarketingImage+direction+marketingWorks[activeMarketingWork].files.length)%marketingWorks[activeMarketingWork].files.length;
+  showMarketingImage();
+}
+marketingGrid.addEventListener('click',event=>{
+  const button=event.target.closest('[data-work]');if(!button)return;
+  activeMarketingWork=Number(button.dataset.work);activeMarketingImage=0;showMarketingImage();
+  marketingViewer.showModal();document.body.classList.add('marketing-dialog-open');
+});
+document.querySelector('#marketing-close').addEventListener('click',()=>marketingViewer.close());
+document.querySelector('#marketing-prev').addEventListener('click',()=>stepMarketingImage(-1));
+document.querySelector('#marketing-next').addEventListener('click',()=>stepMarketingImage(1));
+marketingViewer.addEventListener('close',()=>document.body.classList.remove('marketing-dialog-open'));
+marketingViewer.addEventListener('click',event=>{if(event.target===marketingViewer)marketingViewer.close()});
+marketingViewer.addEventListener('keydown',event=>{
+  if(event.key==='ArrowLeft'){event.preventDefault();stepMarketingImage(-1)}
+  if(event.key==='ArrowRight'){event.preventDefault();stepMarketingImage(1)}
+});

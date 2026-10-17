@@ -26,7 +26,7 @@
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-10" aria-label="Navigasi utama">
       <a href="#home" class="font-display text-lg font-extrabold tracking-tight">PV<span class="text-acid">.</span></a>
       <div class="hidden items-center gap-8 text-sm text-white/60 md:flex">
-        <a class="nav-link" href="#about">Tentang</a><a class="nav-link" href="#projects">Proyek</a><a class="nav-link" href="#experience">Pengalaman</a>
+        <a class="nav-link" href="#about">Tentang</a><a class="nav-link" href="#projects">Proyek</a><a class="nav-link" href="#digital-marketing">Digital Marketing</a><a class="nav-link" href="#experience">Pengalaman</a>
       </div>
       <a href="#contact" class="magnetic rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold hover:border-acid hover:text-acid">Mari bicara</a>
     </nav>
@@ -34,7 +34,10 @@
 
   <main>
     <section id="home" class="relative flex min-h-screen items-center overflow-hidden pt-24">
-      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      <div class="orb orb-one">
+      </div>
+      <div class="orb orb-two">
+      </div>
       <div class="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.15fr_.85fr] lg:px-10">
         <div class="relative z-10">
           <div class="reveal mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[.04] px-4 py-2 text-xs font-semibold uppercase tracking-[.18em] text-white/70">
@@ -62,7 +65,7 @@
         </div>
       </div>
       <div class="absolute bottom-0 left-0 w-full overflow-hidden border-y border-white/10 bg-white/[.025] py-3">
-        <div class="marquee whitespace-nowrap text-sm font-semibold uppercase tracking-[.22em] text-white/35">Web Development ✦ SEO & SEM ✦ Digital Advertising ✦ UI Design ✦ Analytics ✦ WordPress ✦ Laravel ✦ Web Development ✦ SEO & SEM ✦ Digital Advertising ✦ UI Design ✦ Analytics ✦ WordPress ✦ Laravel ✦</div>
+        <div class="marquee whitespace-nowrap text-sm font-semibold uppercase tracking-[.22em] text-white/35">✦ Mobile Apps Development ✦ Web Development ✦ SEO & SEM ✦ Digital Advertising ✦ UI Design ✦ Analytics ✦ WordPress ✦ Laravel ✦ Mobile Apps Development ✦ Web Development ✦ SEO & SEM ✦ Digital Advertising ✦ UI Design ✦ Analytics ✦ WordPress ✦ Laravel ✦</div>
       </div>
     </section>
 
@@ -88,9 +91,34 @@
       </div>
     </section>
 
-    <section id="experience" class="mx-auto max-w-7xl px-5 py-28 lg:px-10 lg:py-36">
+    <section id="digital-marketing" class="mx-auto max-w-7xl px-5 py-28 lg:px-10 lg:py-36" aria-labelledby="marketing-heading">
+      <div class="mb-12 grid gap-8 lg:grid-cols-[1fr_.65fr] lg:items-end">
+        <div><div class="section-tag reveal"><span>03</span> Digital growth portfolio</div><h2 id="marketing-heading" class="reveal mt-6 font-display text-4xl font-bold leading-tight tracking-tight md:text-6xl">Digital Marketing<br><span class="text-acid">Specialist.</span></h2></div>
+        <div class="reveal"><p class="text-lg leading-relaxed text-white/60">Dari visibilitas pencarian hingga kampanye berbayar. Jelajahi dokumentasi SEO, periklanan digital, dan pengelolaan marketplace dari berbagai proyek.</p><a href="#marketing-work" class="nav-link mt-5 inline-block text-sm font-bold text-acid">Jelajahi portofolio &darr;</a></div>
+      </div>
+      <div id="marketing-work">
+        <div id="marketing-filters" class="marketing-filters" role="group" aria-label="Filter portofolio digital marketing">
+          <button type="button" class="marketing-filter" data-category="all" aria-pressed="true">Semua</button>
+          <button type="button" class="marketing-filter" data-category="seo" aria-pressed="false">SEO & Analytics</button>
+          <button type="button" class="marketing-filter" data-category="ads" aria-pressed="false">Paid Advertising</button>
+          <button type="button" class="marketing-filter" data-category="commerce" aria-pressed="false">E-commerce</button>
+          <button type="button" class="marketing-filter" data-category="certification" aria-pressed="false">Sertifikasi</button>
+        </div>
+        <p id="marketing-count" class="mb-6 text-sm text-white/40" aria-live="polite"></p>
+        <div id="marketing-grid" class="marketing-grid"></div>
+      </div>
+      <div class="marketing-report mt-8"><div><p class="text-xs font-bold uppercase tracking-[.15em] text-acid">Project report</p><h3 class="mt-2 font-display text-xl font-bold">CV Creative Furniture</h3><p class="mt-2 text-sm leading-relaxed text-white/50">Dokumentasi laporan proyek UKM dalam format PDF.</p></div><a href="digitalmarketing/CV%20Creative%20Furniture/Laporan%20UKM%20CREATIVE%20FURNITURE.pdf" target="_blank" rel="noopener" class="magnetic shrink-0 rounded-full border border-white/20 px-5 py-3 text-sm font-bold">Buka laporan &nearr;</a></div>
+    </section>
+
+    <dialog id="marketing-viewer" class="marketing-viewer" aria-labelledby="marketing-viewer-title">
+      <div class="marketing-viewer-bar"><h3 id="marketing-viewer-title" class="font-display font-bold"></h3><button type="button" id="marketing-close" aria-label="Tutup pratinjau">Tutup &times;</button></div>
+      <img id="marketing-viewer-image" alt="">
+      <div class="marketing-viewer-bar"><button type="button" id="marketing-prev" aria-label="Gambar sebelumnya">&larr; Sebelumnya</button><p id="marketing-position" aria-live="polite"></p><button type="button" id="marketing-next" aria-label="Gambar berikutnya">Berikutnya &rarr;</button></div>
+    </dialog>
+
+    <section id="experience" class="mx-auto max-w-7xl border-t border-white/10 px-5 py-28 lg:px-10 lg:py-36">
       <div class="grid gap-12 lg:grid-cols-[.45fr_1fr]">
-        <div><div class="section-tag reveal"><span>03</span> Pengalaman</div><p class="reveal mt-6 max-w-xs text-sm leading-relaxed text-white/40">Perjalanan lintas pengembangan produk, periklanan, SEO, dan manajemen proyek.</p></div>
+        <div><div class="section-tag reveal"><span>04</span> Pengalaman</div><p class="reveal mt-6 max-w-xs text-sm leading-relaxed text-white/40">Perjalanan lintas pengembangan produk, periklanan, SEO, dan manajemen proyek.</p></div>
         <div id="timeline" class="border-t border-white/15"></div>
       </div>
     </section>
