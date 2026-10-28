@@ -1,6 +1,13 @@
 const skills=['Mobile Apps Development','Web Development','SEO & SEM','Google Ads','Meta Ads','WordPress','Laravel','Web Analytics','UI & Visual Design','E-commerce'];
 const projects=[
-  {title:'DesDig — Portal Desa',type:'Full-stack web platform',image:'img/ChatGPT Image 13 Jul 2026, 11.25.13.png',tags:['Laravel','Tailwind','CMS'],featured:true},
+  {title:'BankGuru - Assistant AI Guru',type:'Full-stack web platform',image:'img/Aplikasi Bank Soal untuk Guru.png',tags:['Laravel','Tailwind','CMS'],featured:true},
+  {title:'DesDig — Portal Desa',type:'Full-stack web platform',image:'img/ChatGPT Image 13 Jul 2026, 11.25.13.png',tags:['Laravel','Tailwind','CMS']},
+  {title:'Website UMKM',type:'Full-stack web platform',image:'img/ChatGPT Image 21 Sep 2026, 09.41.18.png',tags:['Laravel','Tailwind','CMS']},
+  {title:'Website Company Profile',type:'Full-stack web platform',image:'img/ChatGPT Image 21 Sep 2026, 09.42.42.png',tags:['Laravel','Tailwind','CMS']},
+  {title:'Website Bisnis Produk',type:'Full-stack web platform',image:'img/ChatGPT Image 21 Sep 2026, 09.41.23.png',tags:['Laravel','Tailwind','CMS']},
+  {title:'Website Instansi',type:'Full-stack web platform',image:'img/ChatGPT Image 21 Sep 2026, 09.46.48.png',tags:['Laravel','Tailwind','CMS']},
+  {title:'Website Katalog',type:'Full-stack web platform',image:'img/ChatGPT Image 21 Sep 2026, 09.52.18.png',tags:['Laravel','Tailwind','CMS']},
+  {title:'Portal Informasi Website Sekolah',type:'Full-stack web platform',image:'img/Source Code Portal Sekolah Modern.png',tags:['Laravel','Tailwind','CMS']},
   {title:'Resto Digital Mantap',type:'Restaurant management system',image:'img/ChatGPT Image 14 Jul 2026, 12.32.46.png',tags:['QR Order','Dashboard','Analytics']},
   {title:'QR E-Ticketing',type:'Event ticketing platform',image:'img/NEW1 Desain Promosi (11).png',tags:['Web App','QR System','Admin Panel']},
   {title:'eKoperasi',type:'Integrated cooperative platform',image:'img/NEW1 Desain Promosi (9).png',tags:['Web Platform','Responsive','Management']},
